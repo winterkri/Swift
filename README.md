@@ -7,4 +7,5 @@ hw_4 - Массивы / array
 hw_5 - Dictionary / Словари  
 hw_6 - Tuples / кортежи  
 hw_7 - Опционалы  
-hw_8 - Switch / if else / for each  
+hw_8 - Switch / if else / for each   
+hw_9 - Function / функции / методы
