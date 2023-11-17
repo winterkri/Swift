@@ -64,7 +64,7 @@ for element in data {
 
 let pi = 3.14
 
-func area (r: Double) -> Double {
+func area(r: Double) -> Double {
    var areaK = pi * pow(r, 2)
     return areaK
 }
