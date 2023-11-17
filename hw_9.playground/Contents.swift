@@ -47,7 +47,7 @@ for element in arrayStudents {
 
 var data: [String] = [] //создаем массив
 
-func nameSurname (name: String, surname: String) {
+func nameSurname(name: String, surname: String) {
     var str = "\(name) \(surname)" //склеиваем имя и фамилию
     data.append(str) //помещаем склеенные данные в массив
 }
