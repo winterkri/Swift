@@ -39,11 +39,7 @@ weight1 = 59.5
 master1 = true
 firstcharName1 = "K"
 
-print(age1!)
-print(name1!)
-print(weight1!)
-print(master1!)
-print(firstcharName1!)
+print(age1!, name1!, weight1!, master1!, firstcharName1!)
 
 //Создать переменную строчную, в которую записать свое имя, а затем распечатать ее по буквам
 var myName: String = "Kristina"
@@ -63,3 +59,11 @@ print(arrayPo)
 for number in arrayPo {
     print(number)
 }
+
+//Доп здаания
+
+//перевернуть строку
+
+let name12 = "Tasya"
+let nameReversed = String(name12.reversed()) // name.reversed() возвращает перевёрнутую последовательность символов, его нужно привести к строке
+print(nameReversed)

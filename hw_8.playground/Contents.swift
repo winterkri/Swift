@@ -3,15 +3,15 @@
 //Создать цикл в цикле. В первом цикле интервал до 200. Во втором цикле делаем так, как доходим до 15 элемента в первом цикле, выходим из двух циклов
 
 
-looplabel: for num in 1...200 {
-    for j in 1...15 {
-        if num == 15 {
-         break looplabel
+label: for i in 1...200 {
+    for j in 1...2 {
+        if i == 15 {
+         break label
         } else {
-            print("Второй цикл \(j)")
+            print("Второй цикл еще не дошел до 15")
         }
+         print("Первый цикл \(i) и второй цикл \(j)")
     }
- print("Первый цикл \(num)")
 }
 
 
@@ -86,7 +86,9 @@ for index in array {
 // ---/ Итерация по словарю /---
 let dictOS = ["Apple": "IOS", "Google": "Android", "Microsoft": "Windows"]
 for os in dictOS {
-    print(os.key)
+    print(os) //вывод всех пар
+    print(os.key) //вывод только ключей
+    print(os.value) //вывод только значений
 }
 
 // --/ Итерация по диапазону /--
@@ -142,7 +144,9 @@ default:
 //Создать массив(без тюплов / кортежей) с именами всех членов вашей семьи включая родственников, чтобы количество имен было не менее 10 и отсортируйте, распечатайте по алфавиту их в консоль
 
 let arrayFamily = ["Svetlana", "Tatyana", "Alina", "Elena", "Victor", "Gabriella", "Lida", "Vitaly", "Veronica", "Viktorya", "Danil", "Alexey"]
+
 //print(arrayFamily.sorted()) //можно вывести массивом
+
 for family in arrayFamily.sorted() {
     print(family)
 }

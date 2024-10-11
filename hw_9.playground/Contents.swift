@@ -47,18 +47,34 @@ for element in arrayStudents {
 
 var data: [String] = [] //создаем массив
 
-func nameSurname(name: String, surname: String) {
-    var str = "\(name) \(surname)" //склеиваем имя и фамилию
+func nameSurname(name: String, surname: String) -> String {
+    let str = "\(name) \(surname)" //склеиваем имя и фамилию
     data.append(str) //помещаем склеенные данные в массив
+    return str // возвращаем строку
 }
 nameSurname(name: "Kris", surname: "Zima")
 nameSurname(name: "Lena", surname: "Sergeeva")
 nameSurname(name: "Alina", surname: "Smirnova")
+nameSurname(name: "Tasya", surname: "Malaman")
 //print(data)
 
 for element in data {
     print(element)
 }
+
+
+// Можно еще просто выводить склеенное имя и фамилию:
+func nameSurname2(name: String, surname: String) -> String {
+    return "\(name) \(surname)" // Склеиваем имя и фамилию
+
+}
+
+// Прямой вывод результата в консоль
+print(nameSurname2(name: "Kris", surname: "Zima"))
+print(nameSurname2(name: "Lena", surname: "Sergeeva"))
+print(nameSurname2(name: "Alina", surname: "Smirnova"))
+print(nameSurname2(name: "Tasya", surname: "Malaman"))
+
 
 //Создайте функцию которая принимает параметры и вычисляет площадь круга
 
@@ -70,9 +86,61 @@ func area(r: Double) -> Double {
 }
 area(r: 5.0)
 
-
-//Создайте Dictionary, с именем ученика(цы), где ключ name и score, а значение дата, когда человек получил такую оценку - напишу после изучения структур, пока что не получается
-
-//let dictStudent: [(String, Int): String] = [:]
+// Вычислить площать трапеции
 
 
+func ploshadTrapecii (a: Double, b: Double, h: Double) -> Double {
+    let s = 0.5 * ( a + b ) * h
+    return s
+}
+
+let otvet = ploshadTrapecii(a: 2, b: 4, h: 10)
+print("Площадь трапеции - \(otvet)")
+
+
+
+//Создайте Dictionary, с именем ученика(цы), где ключ name и score, а значение дата, когда человек получил такую оценку
+
+var dictStudent: [String: [Int: String]] = [:]
+
+if dictStudent.isEmpty {
+    dictStudent["Kris"] = [4: "202-01-01"]
+    dictStudent["Lena"] = [5: "202-02-02"]
+    dictStudent["Tasya"] = [5: "202-03-03"]
+}
+print(dictStudent)
+print(dictStudent.keys)
+print(dictStudent.values)
+
+//Узнать какую оценку получила Лена
+
+print(dictStudent["Lena"]!.keys)
+
+//Узнать когда она получила оценку 5
+let date = dictStudent["Lena"]![5]
+print(date!)
+
+
+
+var arry: [(name: String, proff: String, grade: Int)] = []
+func jurnal (name: String, proff: String, grade: Int) {
+    arry.append((name, proff, grade))
+}
+
+jurnal(name:"Kris", proff: "QA", grade: 4)
+jurnal(name:"Alya", proff: "Dev", grade: 1)
+
+for i in arry {
+    print(i)
+}
+
+//Создать функцию которая принимает имя и фамилию, и возвращает имя + фамилию в одной строке, потом пройтись по массиву с именем и фамилией и распечатать скрепленные имен и фамилия вместе в консоль
+
+var nameSurname: [(String, String)] = []
+
+func fio (name: String, surname: String) {
+    nameSurname.append((name, surname))
+}
+
+fio(name: "Крис", surname: "Зима")
+fio(name: "Lena", surname: "Sergeeva")
