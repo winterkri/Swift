@@ -97,7 +97,7 @@ func ploshadTrapecii (a: Double, b: Double, h: Double) -> Double {
 let otvet = ploshadTrapecii(a: 2, b: 4, h: 10)
 print("Площадь трапеции - \(otvet)")
 
-
+// Вспоминала, что забыла
 
 //Создайте Dictionary, с именем ученика(цы), где ключ name и score, а значение дата, когда человек получил такую оценку
 
@@ -108,9 +108,9 @@ if dictStudent.isEmpty {
     dictStudent["Lena"] = [5: "202-02-02"]
     dictStudent["Tasya"] = [5: "202-03-03"]
 }
-print(dictStudent)
-print(dictStudent.keys)
-print(dictStudent.values)
+print(dictStudent) // печатаем словрь полностью
+print(dictStudent.keys) //печатаем ключи словря
+print(dictStudent.values) //печатаем значения
 
 //Узнать какую оценку получила Лена
 
@@ -121,10 +121,11 @@ let date = dictStudent["Lena"]![5]
 print(date!)
 
 
-
-var arry: [(name: String, proff: String, grade: Int)] = []
-func jurnal (name: String, proff: String, grade: Int) {
-    arry.append((name, proff, grade))
+////Создать журнал для учителя, который будет принимать имя студента, профессию и оценку, затем будет записывать это все в массив. И внесите 10 студентов туда и распечатаете через цикл for
+///
+var arry: [(name: String, proff: String, grade: Int)] = [] // создали массив тюплов
+func jurnal (name: String, proff: String, grade: Int) { // создали функцию, которая принимает эти параметры
+    arry.append((name, proff, grade)) //добавили в массив тюпл
 }
 
 jurnal(name:"Kris", proff: "QA", grade: 4)
@@ -134,13 +135,3 @@ for i in arry {
     print(i)
 }
 
-//Создать функцию которая принимает имя и фамилию, и возвращает имя + фамилию в одной строке, потом пройтись по массиву с именем и фамилией и распечатать скрепленные имен и фамилия вместе в консоль
-
-var nameSurname: [(String, String)] = []
-
-func fio (name: String, surname: String) {
-    nameSurname.append((name, surname))
-}
-
-fio(name: "Крис", surname: "Зима")
-fio(name: "Lena", surname: "Sergeeva")
