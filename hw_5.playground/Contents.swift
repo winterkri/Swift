@@ -4,7 +4,7 @@ let klass = ["Anna": 1, "Max": 2, "Elena": 3]
 let ringSize = ["flower": 7, "wedding": 6.5, "cat": 5.5]
 let favoriteFilms = ["MidSommar": true, "1+1": false, "Hereditary": true, "Shrek": true, "Spider-Man": false]
 typealias myChar = Character
-let firstСharacter: [String: Character] = ["MidSommar": "M", "Hereditary": "H", "Shrek": "S", "Spider-Man": "S"]
+let firstСharacter: [String: myChar] = ["MidSommar": "M", "Hereditary": "H", "Shrek": "S", "Spider-Man": "S"]
 let countMoney = [2020: 100000, 2021: 110000, 2022: 220000, 2023: 310000, 2024: 1000000]
 
 // Создать 2 Dictionary, в одном должны быть все месяца на русском, в другом на английском. Чтобы к словарю можно было так обращаться dict1[1] // Январь
@@ -33,10 +33,24 @@ if emptyDict .isEmpty {
     emptyDict["Nika"] = 26
     emptyDict["Kris"] = 27
 } else {
-    print("Массив не пустой")
+    print("Словарь emptyDict не пустой")
 }
 
 print(emptyDict)
+
+
+// еще решение
+var dictEmpty = [Int: String]()
+
+if dictEmpty.isEmpty {
+    dictEmpty[1] = "Swift"
+    dictEmpty[2] = "Python"
+    dictEmpty[3] = "C++"
+} else {
+    print("Словарь dictEmpty не пустой")
+}
+print(dictEmpty)
+
 
 
 //// Другие задания для тренировки
@@ -81,6 +95,7 @@ let school = ["Math": 5, "English": 3, "Biology": 5, "Music": 5]
 //Напишите код, который проверяет, есть ли определенный предмет в словаре, и выводит соответствующее сообщение.
 
 let predmet = "Biology"
+
 if let ocenka = school[predmet] {
     print("Оценка по \(predmet) - \(ocenka)")
 } else {
@@ -96,3 +111,32 @@ var contacts = ["Max": 89870000000, "Alexey": 8956453345, "Alina": 8999993377]
 contacts.removeValue(forKey: "Max")
 //Выведите обновленный список контактов.
 print(contacts)
+
+// Взять ключи словаря dictMoney и поместить их в массив arrayI и значения словаря dictMoney и поместить их в массив arrayJ
+var arrayI = [String]() //объявила пустой массив
+var arrayJ = [Int]() //объявила пустой массив
+
+var dictMoney = ["Kris": 200, "Lena": 300, "Tasya": 500]
+
+for (i,j) in dictMoney{ // цикл, где i - ключ словаря, j - значение словаря
+     arrayI.append(i) // поместить i в массив
+     arrayJ.append(j) // поместить j в массив
+}
+print(arrayI)
+print(arrayJ)
+
+// Создание пустого словаря
+var emptyDict1: [String: Int] = [:]
+
+
+// Взять значение из словаря по ключу
+let exampleDict = ["Billie Eilish": "bad guy", "Kendrik Lamar": "Drunk", "Azizi Gibson": "Cobra"]
+
+let myFavSong: String? = exampleDict["Billie Eilish"]
+myFavSong != nil ? print(myFavSong!) : print("Нет в этом словаре твоей любимой песни") //Тернарный оператор:
+
+//Тут проверяем условие myFavSong != nil:
+//Если песня найдена, распаковывается значение с помощью myFavSong! и выводится.
+//Если ключа нет, выводится сообщение "Нет в этом словаре твоей любимой песни".
+
+
