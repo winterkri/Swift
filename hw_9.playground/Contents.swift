@@ -5,6 +5,7 @@ import Foundation
 // 1-я функция
 func firstFunc() {}
 firstFunc()
+
 // 2 - Принимает, но не возвращает
 
 func secondFunc(a: Int, b: Int) {}
@@ -94,8 +95,8 @@ func ploshadTrapecii (a: Double, b: Double, h: Double) -> Double {
     return s
 }
 
-let otvet = ploshadTrapecii(a: 2, b: 4, h: 10)
-print("Площадь трапеции - \(otvet)")
+let ploshad = ploshadTrapecii(a: 2, b: 4, h: 10)
+print("Площадь трапеции - \(ploshad)")
 
 // Вспоминала, что забыла
 
@@ -121,17 +122,107 @@ let date = dictStudent["Lena"]![5]
 print(date!)
 
 
-////Создать журнал для учителя, который будет принимать имя студента, профессию и оценку, затем будет записывать это все в массив. И внесите 10 студентов туда и распечатаете через цикл for
-///
-var arry: [(name: String, proff: String, grade: Int)] = [] // создали массив тюплов
-func jurnal (name: String, proff: String, grade: Int) { // создали функцию, которая принимает эти параметры
-    arry.append((name, proff, grade)) //добавили в массив тюпл
+//////Создать журнал для учителя, который будет принимать имя студента, профессию и оценку, затем будет записывать это все в массив. И внесите 10 студентов туда и распечатаете через цикл for
+/////
+//var arry: [(name: String, proff: String, grade: Int)] = [] // создали массив тюплов
+//
+//func jurnal (name: String, proff: String, grade: Int) { // создали функцию, которая принимает эти параметры
+//    arry.append((name, proff, grade)) //добавили в массив тюпл
+//}
+//
+//jurnal(name:"Kris", proff: "QA", grade: 4)
+//jurnal(name:"Alya", proff: "Dev", grade: 1)
+//
+//for i in arry {
+//    print(i)
+//}
+
+
+// ------ задачки для закрепления темы
+//Создайте функцию, которая будет выводить на консоль сумму следующих чисел:
+//Функция должна быть без параметров и без возвращаемых значений.
+
+let numberOne = 78
+let numberTwo = 44
+
+func printim() {
+    print(numberOne + numberTwo)
 }
 
-jurnal(name:"Kris", proff: "QA", grade: 4)
-jurnal(name:"Alya", proff: "Dev", grade: 1)
+printim()
 
-for i in arry {
-    print(i)
+
+//Создайте функцию, которая будет возвращать рандомное значение от 0 до 100 типа Double.
+
+func randomNumber() -> Double {
+    return Double.random(in: 0...100)
 }
+
+randomNumber()
+
+//Создайте функцию, которая будет принимать в качестве параметра целое число, и выводить на консоль все числа этого значения.
+//Например если мы передадим в функцию 5 то при вызове данной функции мы должны увидеть следующий результат:
+
+func printNumber(_ number: Int) {
+    for i in 1...number {
+        print(i)
+    }
+}
+
+printNumber(5)
+
+//Создайте функцию, которая принимает имя пользователя в параметр, и возвращает логическое значение true если имя не превышает
+//четырех символов.
+
+func userName (name: String) -> Bool {
+    if name.count <= 4 { // если кол-во символов в переданном имени меньше либо = 4, то возвращаем тру
+        return true
+    } else {
+        return false
+    }
+}
+userName(name: "Kristina")
+
+
+//Создайте функцию, которая будет принимать в качестве параметра целое число, и возвращать массив со всеми простыми числами
+//этого значения. Например если мы передадим в функцию 5 то при вызове данной функции она вернет массив [1, 2, 3, 4, 5].
+//Присвойте результат работы функции новому свойству.
+
+func primeNumbers(number: Int) -> [Int] {
+    var arrayPrimeNumbers: [Int] = []
+    for i in 1...number {
+        arrayPrimeNumbers.append(i)
+    }
+    return arrayPrimeNumbers
+}
+
+let totalArray = primeNumbers(number: 10)
+print(totalArray)
+
+
+//дайте функцию, которая будет принимать следующий словарь со студентами:
+let students = ["Tim": Int.random(in: 1...100),
+                "Sem": Int.random(in: 1...100),
+                "Taylor": Int.random(in: 1...100),
+                "Stan": Int.random(in: 1...100)]
+
+//Ключом является имя студента, а значением его проходной балл.
+//Функция должна возвращать словарь с теми же студентами, но в качестве значения должен выступать статус либо hight либо low (для
+//этого можно определить перечисление), если у студента баллы выше или равны 50 то мы для него определяем группу hight, если
+//ниже то low.
+//Присвойте результат работы функции новому свойству
+
+func statusStudents(stud: [String: Int]) -> [String: String] {
+    var newStatusDict: [String: String] = [:]
+    for i in stud { //бежим циклом по элементам переданного при вызове функции словаря
+        if i.value >= 50 { //если значение элемента, например, "Tim": Int.random(in: 1...100) с индексом i больше либо = 50
+            newStatusDict[i.key] = "High" // вставляем в созданный словарь значение "High" для ключа i.key
+        } else {
+            newStatusDict[i.key] = "Low"
+        }
+        }
+    return newStatusDict
+    }
+
+print(statusStudents(stud: students))
 
