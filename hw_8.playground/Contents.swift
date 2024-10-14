@@ -83,6 +83,14 @@ for index in array {
     print(index)
 }
 
+// через forEach
+let array1 = [1, 2, 3, 4, 5, 6, 7]
+
+array1.forEach { i in // i будет принимать значения 1, 2, 3, ..., 7 на каждой итерации
+    print("Итерация по массиву с помощью forEach - \(i)")
+}
+
+
 // ---/ Итерация по словарю /---
 let dictOS = ["Apple": "IOS", "Google": "Android", "Microsoft": "Windows"]
 for os in dictOS {
@@ -90,6 +98,16 @@ for os in dictOS {
     print(os.key) //вывод только ключей
     print(os.value) //вывод только значений
 }
+
+//Через forEach
+let dictOS1 = ["Apple": "IOS", "Google": "Android", "Microsoft": "Windows"]
+
+func dictForEach (sl: [String: String]) {
+    sl.forEach { (key: String, value: String) in
+        print("Вывод ключа и знаечния: \(key) - \(value)")
+    }
+}
+dictForEach(sl: dictOS1)
 
 // --/ Итерация по диапазону /--
 for i in 0...10 {
@@ -145,8 +163,17 @@ default:
 
 let arrayFamily = ["Svetlana", "Tatyana", "Alina", "Elena", "Victor", "Gabriella", "Lida", "Vitaly", "Veronica", "Viktorya", "Danil", "Alexey"]
 
-//print(arrayFamily.sorted()) //можно вывести массивом
+// Решение 1
+print(arrayFamily.sorted()) //можно вывести массивом
 
+// Решение 2
+let newArrayFamily = arrayFamily.sorted()
+
+newArrayFamily.forEach { key in
+    print(key)
+}
+
+// Решение 3
 for family in arrayFamily.sorted() {
     print(family)
 }
