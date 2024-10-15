@@ -9,3 +9,5 @@ hw_6 - Tuples / кортежи
 hw_7 - Опционалы  
 hw_8 - Switch / if else / for each   
 hw_9 - Function / функции / методы
+hw_10 -  Замыкания / closure
+hw_11 -  Перечисления / enum
