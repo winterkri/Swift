@@ -83,8 +83,8 @@ enum myBox: CaseIterable { //CaseIterable - протокол, который и�
 }
 
 
-    for num in myBox.allCases {
-        print("В моем гараже есть маина - \(num)")
+    for auto in myBox.allCases {
+        print("В моем гараже есть машина - \(auto)")
     }
 
 
