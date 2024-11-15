@@ -5,8 +5,8 @@ var sum = 0 // переменная для хранения суммы
 
 for i in money {
   sum = sum + i
-  print("Количество денег: \(sum) долларов")
 }
+print("Количество денег: \(sum) долларов")
 
 // найти в этом массиве имя “Tim”, и вывести его на консоль.
 let names = ["Bill" , "Tim", "Tom", "Sem"]
@@ -39,8 +39,8 @@ print("В месяце \(month) \(day) день")
 // можно без функции zip
 
 for i in 0..<days.count { // проходим по каждому индексу в массиве с днями. days.count возвращает количество элементов в массиве days
-    var day = days[i]
-    var month = months[i] // используем текущее значение i для доступа к элементу в массиве с месяцами с тем же индексом и сохраняем в переменную
+    let day = days[i]
+    let month = months[i] // используем текущее значение i для доступа к элементу в массиве с месяцами с тем же индексом и сохраняем в переменную
     print("В месяце \(month) - \(day) день")
 }
 
@@ -71,13 +71,15 @@ for i in tupleMonthDay {
 var tupleDayMounth: [(day: Int, month: String)] = [] //создаем пустой массив тюплов
 
 for i in 0..<days.count {
-    tupleDayMounth.append((day: days[i], month: months[i])) //с помощью индекса обращаемся к элементам массивов days и months, создаем и добавляем
-                                                            // тюплы в пустой массив tupleDayMounth
+    tupleDayMounth.append((day: days[i], month: months[i])) //с помощью индекса обращаемся к элементам массивов days и months, создаем и добавляем тюплы в пустой массив tupleDayMounth
 }
 
-for i in 0..<days.count {
-    print("В месяце \(tupleDayMounth[i].1) - \(tupleDayMounth[i].0) день")
+
+for i in tupleDayMounth {
+    print("В месяце - \(i.month) , \(i.day) день(дней) ")
 }
+
+
 
 // Сделай тоже самое, только выводи дни в обратном порядке (порядок в массиве не меняется)
 for i in (0..<tupleMonthDay.count).reversed() {
@@ -85,7 +87,6 @@ for i in (0..<tupleMonthDay.count).reversed() {
     print("В месяце \(tupleMonthDay[i].0) - \(day) день")
 }
 
-// Для произвольно выбранной даты (месяц и день) посчитайте количество дней до этой даты от начала года
 
 func star(month: String, day: Int) -> Int? {
     let tupleMonthDay = [
@@ -104,21 +105,34 @@ func star(month: String, day: Int) -> Int? {
     ]
     var countDays = 0 //переменная для подсчета количества дней
     
+    // c for
+    //    for data in tupleMonthDay { // бежим по tupleMonthDay циклом, на первой итерации в data будет Январь
+    //        if data.0 == month { //если переданный месяц = месяцу в тюпле, то проверяем день // на первой итерации условие не выполнится и вернется countDays = countDays + data.1
+    //            if day > 0 && day <= data.1 { // если день больше 0 и <= количеству дней из тюпла tupleMonthDay в текущем месяце, то
+    //                return countDays + day //возвращаем общее кол-во дней до указанной даты
+    //            } else {
+    //                return nil // если день не корректен
+    //            }
+    //        }
+    //        countDays = countDays + data.1 // на каждой итерации countDays увеличиваем на количество дней в текущем месяце data
+    //            //print(countDays)
+    //    }
+    //    return nil // месяц не найден в тюпле
+    //}
+    //
+    // c guard
     for data in tupleMonthDay {
-        if data.0 == month { //если введенный месяц = месяцу в тюпле, то проверяем день
-            if day > 0 && day <= data.1 { // если день больше 0 и <= количеству дней из тюпла tupleMonthDay в текущем месяце, то
-                return countDays + day //возвращаем общее кол-во дней до указанной даты
-            } else {
-                return nil // если день не корректен
-            }
+        if month == data.0 {
+            // Проверяем корректность дня в текущем месяце
+            guard day > 0 && day <= data.1 else {return nil} // Если день не корректен, возвращаем nil
+            return countDays + day // Если месяц найден, возвращаем количество дней до указанной даты
         }
-        countDays = countDays + data.1 // на каждой итерации countDays увеличиваем на количество дней в текущем месяце
-       //print(countDays)
+        countDays += data.1 // Добавляем количество дней текущего месяца
     }
-    return nil // месяц не найден в тюпле
+    return nil // Месяц не найден, возвращаем nil
 }
 
-if let countDays = star(month: "Август", day: 20) {
+if let countDays = star(month: "Август", day: 20) { // делаем опшинл бандинг, чтобы не делать насильно развертывание
     print("До 1 января прошло \(countDays) с начала года")
 } else {
     print("Невалидные данные")

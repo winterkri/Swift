@@ -32,16 +32,15 @@ findX(a: 2.0, b: 5.0, c: 2.0) // вызов функции
 // случай когда известны длины сторон а и b.
 
 func area (a: Double, b: Double) -> Double {
-    let h_a = sqrt((pow(b,2)) - (pow(a,2) / 4.0))
-    let s = (1.0/2.0) * (a * h_a)
-    return s
+    let h = sqrt((pow(b,2)) - (pow(a,2) / 4.0))
+    return (a * h) / 2.0
 }
 area(a: 5.0, b: 7.0)
 
 // Вычислить площадь квадрата
 
 func areaSquare (a: Int) -> Int {
-    let s = a * a
-    return s
+    return a * a
+    
 }
 areaSquare(a: 5)
