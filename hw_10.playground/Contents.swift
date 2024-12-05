@@ -129,28 +129,34 @@ func direction(_ directions: String...) {
 direction("north")
 direction("north", "east")
 
+
 //Создайте функцию, которая будет удваивать переданное ей значение типа Int, и возвращать этот результат.
-//Далее создайте еще одну функцию, которая будет принимать три параметра: функцию созданную ранее, значение, которое
-//планируем увеличивать в два раза и число, которое будет отвечать за количество вызовов, переданной в параметр функции.
-//Функция должна выводить следующий результат на консоль: "Operation result after iteration <номер итерации> is: <результат>
-//Например если мы захотим 5 раз увеличить число 3, то на консоли мы должны получить следующий результат:
-
-
 func doubleNum (num: Int) -> Int {
     return num * 2
 }
 
 doubleNum(num: 10)
 
+//Далее создайте еще одну функцию, которая будет принимать три параметра: функцию созданную ранее, значение, которое
+//планируем увеличивать в два раза и число, которое будет отвечать за количество вызовов, переданной в параметр функции.
+//Функция должна выводить следующий результат на консоль: "Operation result after iteration <номер итерации> is: <результат>
+//Например если мы захотим 5 раз увеличить число 3, то на консоли мы должны получить следующий результат:
 
 func otherFunc (earlyFunc: (Int) -> Int, znachenie: Int, kolichestvo: Int) {
-    var newNum = znachenie // присваиваем переменной newNum значение из znachenie, то есть 11
-    for i in 1...kolichestvo {
-        newNum = earlyFunc(newNum) // присваиваем получившиеся увеличенное значение znachenie, тем самым увеличиваем newNum
-        print("Operation result after iteration \(i) is: \(newNum)")
-    }
+    //    var newNum = znachenie // присваиваем переменной newNum значение из znachenie, то есть 11
+    //    for i in 0...kolichestvo {
+    //        newNum = earlyFunc(newNum) // присваиваем получившиеся увеличенное значение znachenie, тем самым увеличиваем newNum
+    //        print("Operation result after iteration \(i) is: \(newNum)")
+    //    }
+    //
     
+    for i in 0...kolichestvo {
+        let value =  earlyFunc(znachenie)
+        print("Operation result after iteration \(i) is: \(value)")
+    }
 }
+    
+//}
 
 otherFunc(earlyFunc: doubleNum, znachenie: 11, kolichestvo: 3)
 

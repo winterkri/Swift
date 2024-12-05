@@ -86,26 +86,31 @@ enum myBox: CaseIterable { //CaseIterable - протокол, который и�
     for auto in myBox.allCases {
         print("В моем гараже есть машина - \(auto)")
     }
-
+print("______")
 
 
 ///Решение  с помощью массива
 
 enum myBoxArray: String {
-    case BMW = "BMV"
-    case Porche = "Porche"
-    case Lada = "Lada"
-    case Mercedes = "Mercedes"
-    case Mustang = "Mustang"
+    case BMW
+    case Porche
+    case Lada
+    case Mercedes
+    case Mustang
 }
 
 
 var arrayMyBox: [myBoxArray] = [.BMW, .Lada, .Mercedes, .Mustang, .Porche]
 
-    for auto in arrayMyBox {
-        if arrayMyBox.isEmpty {
-            print("Твой гараж пуст")
-            } else {
-        print("\("В моем гараже стоит \(auto)")")
-        }
+//если у тебя массив изначальное пустой, то он никогда не зайдет в цикл. Такие проверки лучше делать до начала цикла.
+//Давай так, напиши функцию, которая принимает массив [myBoxArray], и внутри себя выводит все надписи в консоль. Важно до начала цикла сделай проверку на пустоту массива через guard
+func printMyCar(arr: [myBoxArray]) {
+    guard !arr.isEmpty else {
+        print("Твой гараж пуст")
+        return}
+    for auto in arr {
+        print("В моем гараже стоит \(auto)")
+    }
 }
+
+printMyCar(arr: arrayMyBox)

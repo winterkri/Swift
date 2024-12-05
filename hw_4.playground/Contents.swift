@@ -87,7 +87,7 @@ for i in (0..<tupleMonthDay.count).reversed() {
     print("В месяце \(tupleMonthDay[i].0) - \(day) день")
 }
 
-
+//(Со звездочкой) Для произвольно выбранной даты (месяц и день) посчитайте количество дней до этой даты от начала года
 func star(month: String, day: Int) -> Int? {
     let tupleMonthDay = [
         ("Январь", 31),
@@ -105,6 +105,24 @@ func star(month: String, day: Int) -> Int? {
     ]
     var countDays = 0 //переменная для подсчета количества дней
     
+// c guard
+    for data in tupleMonthDay {
+        if month == data.0 {
+            // Проверяем корректность дня в текущем месяце
+            guard day > 0 && day <= data.1 else {return nil} // Если день не корректен, возвращаем nil
+            return countDays + day // Если месяц найден, возвращаем количество дней до указанной даты
+        }
+        countDays += data.1 // Добавляем количество дней текущего месяца
+    }
+    return nil // Месяц не найден, возвращаем nil
+}
+
+if let countDays = star(month: "Август", day: 20) { // делаем опшинл бандинг, чтобы не делать насильно развертывание
+    print("Прошло \(countDays) дня(дней) с начала года до даты")
+} else {
+    print("Невалидные данные")
+}
+
     // c for
     //    for data in tupleMonthDay { // бежим по tupleMonthDay циклом, на первой итерации в data будет Январь
     //        if data.0 == month { //если переданный месяц = месяцу в тюпле, то проверяем день // на первой итерации условие не выполнится и вернется countDays = countDays + data.1
@@ -120,20 +138,3 @@ func star(month: String, day: Int) -> Int? {
     //    return nil // месяц не найден в тюпле
     //}
     //
-    // c guard
-    for data in tupleMonthDay {
-        if month == data.0 {
-            // Проверяем корректность дня в текущем месяце
-            guard day > 0 && day <= data.1 else {return nil} // Если день не корректен, возвращаем nil
-            return countDays + day // Если месяц найден, возвращаем количество дней до указанной даты
-        }
-        countDays += data.1 // Добавляем количество дней текущего месяца
-    }
-    return nil // Месяц не найден, возвращаем nil
-}
-
-if let countDays = star(month: "Август", day: 20) { // делаем опшинл бандинг, чтобы не делать насильно развертывание
-    print("До 1 января прошло \(countDays) с начала года")
-} else {
-    print("Невалидные данные")
-}

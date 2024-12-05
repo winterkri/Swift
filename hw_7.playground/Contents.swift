@@ -65,5 +65,39 @@ for number in arrayPo {
 //перевернуть строку
 
 let name12 = "Tasya"
+// Решение 1:
 let nameReversed = String(name12.reversed()) // name.reversed() возвращает перевёрнутую последовательность символов, его нужно привести к строке
 print(nameReversed)
+
+//Решение 2:
+var value: String = ""
+for i in name12.reversed() {
+    value += String(i)
+}
+print(value)
+
+//Решение 3:
+
+var value2: String = ""
+for i in stride(from: name12.count - 1, through: 0, by: -1)  {
+    value2 += String(name12[i])
+}
+
+print("Решение с индексом: \(value2)")
+
+//экстеншен для доступа к символам строки по индексу
+extension String {
+    subscript (index: Int) -> Character { //сабскрипт, который принимает индекс
+            let indexValue = self.index(self.startIndex, offsetBy: index) // получаем позицию символа в строке
+            return self[indexValue] //возвращаем символ по позиции
+        }
+    }
+
+
+//написать экстеншен для стринг, чтобы когда мы обращались к name12[i] у нас вывдилось значение
+
+//self[i]) -> Character {
+//        self[self.index(self.startIndex, offsetBy: i)]
+//    }
+
+

@@ -113,27 +113,50 @@ contacts.removeValue(forKey: "Max")
 print(contacts)
 
 // Взять ключи словаря dictMoney и поместить их в массив arrayI и значения словаря dictMoney и поместить их в массив arrayJ
-var arrayI = [String]() //объявила пустой массив
-var arrayJ = [Int]() //объявила пустой массив
 
 var dictMoney = ["Kris": 200, "Lena": 300, "Tasya": 500]
 
-for (i,j) in dictMoney{ // цикл, где i - ключ словаря, j - значение словаря
-     arrayI.append(i) // поместить i в массив
-     arrayJ.append(j) // поместить j в массив
-}
-print(arrayI)
-print(arrayJ)
+var arrayKey = dictMoney.keys
+var arrayValue = dictMoney.values
+
+
+print(arrayKey)
+print(arrayValue)
+
+//for (i,j) in dictMoney{ // цикл, где i - ключ словаря, j - значение словаря
+//     arrayI.append(i) // поместить i в массив
+//     arrayJ.append(j) // поместить j в массив
+//}
+
+//for i in dictMoney {
+//    arrayKey.append(i.key)
+//    arrayValue.append(i.value)
+//}
 
 // Создание пустого словаря
 var emptyDict1: [String: Int] = [:]
 
 
 // Взять значение из словаря по ключу
-let exampleDict = ["Billie Eilish": "bad guy", "Kendrik Lamar": "Drunk", "Azizi Gibson": "Cobra"]
-
+let exampleDict = ["Billie Eilish": "bad guy", "Kendrick Lamar": "Drunk", "Azizi Gibson": "Cobra"]
 let myFavSong: String? = exampleDict["Billie Eilish"]
-myFavSong != nil ? print(myFavSong!) : print("Нет в этом словаре твоей любимой песни") //Тернарный оператор:
+
+// через if
+if let value = myFavSong {
+    print("В словаре есть твоя любимая песня - \(value)")
+} else {
+    print("Нет в этом словаре твоей любимой песни")
+}
+
+// через гуард
+func printMySong(dict: [String: String], key: String) -> String {
+    guard let value = dict[key] else { return "Нет в этом словаре твоей любимой песни" }
+    return "В словаре есть твоя любимая песня - \(value)"
+}
+printMySong(dict: exampleDict, key: "Kendrick Lamar")
+
+//Через тернарный оператор
+myFavSong != nil ? print(myFavSong!) : print("Нет в этом словаре твоей любимой песни")
 
 //Тут проверяем условие myFavSong != nil:
 //Если песня найдена, распаковывается значение с помощью myFavSong! и выводится.

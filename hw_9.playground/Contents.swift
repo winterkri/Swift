@@ -82,7 +82,7 @@ print(nameSurname2(name: "Tasya", surname: "Malaman"))
 let pi = 3.14
 
 func area(r: Double) -> Double {
-   var areaK = pi * pow(r, 2)
+   let areaK = pi * pow(r, 2)
     return areaK
 }
 area(r: 5.0)
@@ -173,31 +173,67 @@ printNumber(5)
 
 //Создайте функцию, которая принимает имя пользователя в параметр, и возвращает логическое значение true если имя не превышает
 //четырех символов.
-
+//
 func userName (name: String) -> Bool {
-    if name.count <= 4 { // если кол-во символов в переданном имени меньше либо = 4, то возвращаем тру
-        return true
-    } else {
-        return false
-    }
+    //Решение 1
+//    if name.count <= 4 { // если кол-во символов в переданном имени меньше либо = 4, то возвращаем тру
+//        return true
+//    } else {
+//        return false
+//    }
+    //Решение 2:
+//    guard name.count <= 4 else { return false }
+//    return true
+    
+    //Решение 3
+   return name.count <= 4
 }
+
 userName(name: "Kristina")
+userName(name: "Yan")
+
+//Решение 4:
+let name = "Kristinka"
+let value = name.count <= 4 ? true : false
 
 
-//Создайте функцию, которая будет принимать в качестве параметра целое число, и возвращать массив со всеми простыми числами
+
+
+//Создайте функцию, которая будет принимать в качестве параметра целое число, и возвращать массив со всеми числами
 //этого значения. Например если мы передадим в функцию 5 то при вызове данной функции она вернет массив [1, 2, 3, 4, 5].
 //Присвойте результат работы функции новому свойству.
 
 func primeNumbers(number: Int) -> [Int] {
-    var arrayPrimeNumbers: [Int] = []
+    var arrayNumbers: [Int] = []
     for i in 1...number {
-        arrayPrimeNumbers.append(i)
+        arrayNumbers.append(i)
     }
-    return arrayPrimeNumbers
+    return arrayNumbers
 }
 
 let totalArray = primeNumbers(number: 10)
 print(totalArray)
+
+//функция, которая возвращает массив именно простых чисел
+
+func printNum(number: Int) -> [Int] {
+    var arrayPrimeNumbers: [Int] = []
+    let sqrt = Int(sqrt(Double(number)))
+    
+    for i in 2...sqrt {
+        if number % i == 0 {
+            arrayPrimeNumbers.append(i)
+        } else {
+            print("Число \(i) не простое")
+        }
+    }
+    return arrayPrimeNumbers
+}
+
+let numArr = printNum(number: 10)
+
+print("Массив простых чисел:")
+print(numArr)
 
 
 //дайте функцию, которая будет принимать следующий словарь со студентами:
@@ -211,18 +247,42 @@ let students = ["Tim": Int.random(in: 1...100),
 //этого можно определить перечисление), если у студента баллы выше или равны 50 то мы для него определяем группу hight, если
 //ниже то low.
 //Присвойте результат работы функции новому свойству
+// Решение через if
+//func statusStudents(stud: [String: Int]) -> [String: String] {
+//    var newStatusDict: [String: String] = [:]
+//    for i in stud { //бежим циклом по элементам переданного при вызове функции словаря
+//        if i.value >= 50 { //если значение элемента, например, "Tim": Int.random(in: 1...100) с индексом i больше либо = 50
+//            newStatusDict[i.key] = "High" // вставляем в созданный словарь значение "High" для ключа i.key
+//        } else {
+//            newStatusDict[i.key] = "Low"
+//        }
+//        }
+//    return newStatusDict
+//    }
+//
+//print(statusStudents(stud: students))
 
+print(students)
+
+// Решение через тернарный оператор
 func statusStudents(stud: [String: Int]) -> [String: String] {
     var newStatusDict: [String: String] = [:]
     for i in stud { //бежим циклом по элементам переданного при вызове функции словаря
-        if i.value >= 50 { //если значение элемента, например, "Tim": Int.random(in: 1...100) с индексом i больше либо = 50
-            newStatusDict[i.key] = "High" // вставляем в созданный словарь значение "High" для ключа i.key
-        } else {
-            newStatusDict[i.key] = "Low"
-        }
-        }
-    return newStatusDict
+         newStatusDict[i.key] = i.value >= 50 ? "High" : "Low"
     }
-
+    return newStatusDict
+}
 print(statusStudents(stud: students))
 
+
+//Задача: Напишите функцию, которая принимает массив целых чисел и возвращает массив строк, где каждое число преобразовано в строку "Even" (четное), "Odd" (нечетное) или "Zero" (ноль). Используйте тернарный оператор для преобразования каждого числа.
+
+func getArrayNumbers(arr: [Int]) -> [String] {
+    var arrayStrings: [String] = []
+    for i in arr {
+        arrayStrings.append(i == 0 ? "Zero" : (i % 2 == 0 ? "Even" : "Odd"))
+    }
+    return arrayStrings
+}
+
+print(getArrayNumbers(arr: [1, 2, 3, 4, 5, 6, 0]))
