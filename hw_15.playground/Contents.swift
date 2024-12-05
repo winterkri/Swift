@@ -45,7 +45,7 @@ class Sum {
     let numbers = [1, 6, 7, 10]
     
     subscript (index: Int) -> Double {
-        return Double(numbers[index] * 100 / 2) //извлекаем число из массива numbers, умножаем его на 100 и делим на 2
+        return Double(numbers[index] * 100 / 2) //извлекаем число из массива numbers по индексу, умножаем его на 100 и делим на 2
     }
 }
 
@@ -346,7 +346,7 @@ print(file.mediaItems)
 file.addItem2(element: .image("Vocation", 6))
 file.addItem2(element: .audio("2pac", 10))
 print(file.mediaItemsDict)
-print(file.allSize(element: [.audio("Kendric Lamar", 10), .video("Солнцестояние", 20000), .image("Me", 11), .image("My friends", 1.2)]))
+print(file.allSize(element: [.audio("Kendrick Lamar", 10), .video("Солнцестояние", 20000), .image("Me", 11), .image("My friends", 1.2)]))
 
 /*
 Задача:

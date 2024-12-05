@@ -103,9 +103,10 @@ class Task {
     }
     
     func printAllPersonsReversed() {
-        let reversArr = arr.reversed()
-        print("\(reversArr)")
-        for person in reversArr {
+        let reversArr = Array(arr.reversed())
+        print("Исходный массив: \(arr)")
+        print("Перевернули массив: \(reversArr)")
+        reversArr.forEach { person in
             print("Выводим в обратном порядке: ")
             print("Имя - \(person.name), рост - \(person.height), вес - \(person.weight), пол - \(person.gender)")
         }
@@ -120,6 +121,7 @@ task.addPerson(person: cook)
 task.addPerson(person: fighter)
 //Вызываем функцию printAllPersons, которая распечатает нам все характеристики
 task.printAllPersons()
+task.printAllPersonsReversed()
 
 
 
