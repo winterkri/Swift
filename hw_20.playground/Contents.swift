@@ -4,16 +4,15 @@ import Foundation
 
 extension String {
     func toInt() -> Int {
-            if let strToInt = Int(self) {
-                return strToInt
-            } else {
-                return 0
-            }
-        }
+      //  return Int(self) ?? 0
+        guard let value = Int(self) else {return 0}
+        return value
+}
+    
     func toOptional() -> Int? {
         return Int(self)
     }
-    }
+}
 "123".toInt()
 "xyz".toInt()
 "zyx".toOptional()
@@ -56,11 +55,10 @@ print("PrIvEtIkI".toLowercase())
 extension String {
     var isPolindrom: Bool {
         let revString = String(self.reversed()).toLowercase()
-        if self.toLowercase() == revString {
-            return true
-        } else {
+        guard self.toLowercase() == revString else {
             return false
         }
+        return true
     }
 }
 
@@ -124,16 +122,17 @@ extension Int {
     }
     //Решение 2, тут уже учтем 0
     func isPositiveOrNegative2() -> String {
-        if self > 0 {
+        switch self {
+        case let value where value > 0:
             return "Число положительное"
-        } else if self < 0 {
+        case let value where value < 0:
             return "Число отрицательное"
-        } else if self == 0 {
-            return "Число 0"
-        } else {
-            return "Не удалось распознать число"
+        default:
+            return "Ноль"
         }
     }
 }
 
 (-1).isPositiveOrNegative()
+20.isPositiveOrNegative2()
+0.isPositiveOrNegative2()
