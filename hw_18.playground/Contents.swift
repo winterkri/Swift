@@ -39,7 +39,7 @@ class Human {
     func getBro () -> [Human] {
         var siblings2: [Human] = []
         // Проходим по всем родителям человека с помощью цикла forEach
-        parents?.forEach({ parent in
+        self.parents?.forEach({ parent in
             // Проходим по всем детям каждого родителя (то есть по всем братьям и сестрам)
             parent.kids?.forEach({ kid in
                 // Проверяем, что "ребенок" не является самим текущим человеком
@@ -57,7 +57,7 @@ class Human {
         var uncles: [Human] = []
         
         // Ищем дядь и теть: перебираем всех бабушек и дедушек через родителей
-        parents?.forEach { parent in
+        self.parents?.forEach { parent in
             parent.parents?.forEach { grandparent in
                 // Добавляем всех детей бабушек и дедушек, кроме самого родителя
                 grandparent.kids?.forEach { sibling in
@@ -78,7 +78,7 @@ class Human {
         var cousins: [Human] = []
         
         // Проходим по родителям
-        parents?.forEach { parent in
+        self.parents?.forEach { parent in
             // Проходим по бабушкам и дедушкам
             parent.parents?.forEach { grandparent in
                 // Проходим по детям бабушек и дедушек
