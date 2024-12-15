@@ -91,7 +91,7 @@ print("______")
 
 ///Решение  с помощью массива
 
-enum myBoxArray: String {
+enum myBoxArray {
     case BMW
     case Porche
     case Lada
@@ -114,3 +114,5 @@ func printMyCar(arr: [myBoxArray]) {
 }
 
 printMyCar(arr: arrayMyBox)
+
+

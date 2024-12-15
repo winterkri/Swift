@@ -77,21 +77,40 @@ returnDict2(keys: ["x","z"])
 //Написать функцию, которая принимает пустые массивы(один - строковый, второй - числовой) и проверяет их: если пустой - то добавить значения (любые) и вывести в консоль.
 
 
+//func forEmptyArrays(arrayOne: [String], arrayTwo: [Int]) {
+// 
+//    var firstArray = arrayOne
+//    var secondArray = arrayTwo
+//    
+//    if !arrayOne.isEmpty && !arrayTwo.isEmpty {
+//        print("Массивы не пусты")
+//    } else if arrayOne.isEmpty && arrayTwo.isEmpty {
+//        secondArray.append(Int.random(in: 9...100))
+//        firstArray.append("Kri")
+//    } else if arrayOne.isEmpty {
+//        firstArray.append("Bro")
+//    } else if arrayTwo.isEmpty  {
+//        secondArray.append(Int.random(in: 5...7))
+//    }
+//    
+//    print(firstArray)
+//    print(secondArray)
+//}
+//
+//forEmptyArrays(arrayOne: [], arrayTwo: [])
+
+
 func forEmptyArrays(arrayOne: [String], arrayTwo: [Int]) {
  
     var firstArray = arrayOne
     var secondArray = arrayTwo
     
-    if !arrayOne.isEmpty && !arrayTwo.isEmpty {
-        print("Массивы не пусты")
-    } else if arrayOne.isEmpty && arrayTwo.isEmpty {
+   if arrayOne.isEmpty && arrayTwo.isEmpty {
         secondArray.append(Int.random(in: 9...100))
         firstArray.append("Kri")
-    } else if arrayOne.isEmpty {
-        firstArray.append("Bro")
-    } else if arrayTwo.isEmpty  {
-        secondArray.append(Int.random(in: 5...7))
-    }
+   } else {
+       print("Массивы не пусты")
+   }
     
     print(firstArray)
     print(secondArray)

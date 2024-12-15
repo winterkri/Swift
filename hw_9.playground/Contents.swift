@@ -216,24 +216,32 @@ print(totalArray)
 
 //функция, которая возвращает массив именно простых чисел
 
-func printNum(number: Int) -> [Int] {
-    var arrayPrimeNumbers: [Int] = []
-    let sqrt = Int(sqrt(Double(number)))
-    
-    for i in 2...sqrt {
-        if number % i == 0 {
-            arrayPrimeNumbers.append(i)
-        } else {
-            print("Число \(i) не простое")
+func arrPrimeNumbers(number: Int) {
+    var primeNumbers: [Int] = []
+    guard number > 1 else {return}
+    for i in 2...number { // Перебираем числа от 2 до заданного числа
+        var isPrime = true
+        for j in 2..<i { // Проверяем делимость числа i на все числа от 2 до i-1
+            if i % j == 0 {  // Если делится, то это не простое число
+                isPrime = false
+                break
+            }
         }
+        if isPrime { // Если число осталось простым, добавляем его в массив
+                   primeNumbers.append(i)
+               }
     }
-    return arrayPrimeNumbers
+    print(primeNumbers)
 }
 
-let numArr = printNum(number: 10)
+arrPrimeNumbers(number: 10)
 
-print("Массив простых чисел:")
-print(numArr)
+
+//Для всех i от 1 до 10 {
+//проверить, делится ли число i на какое-либо из чисел до него
+//если делится, то это i не подходит, берём следующее
+//если не делится, то i - простое число
+//}
 
 
 //дайте функцию, которая будет принимать следующий словарь со студентами:
@@ -286,3 +294,42 @@ func getArrayNumbers(arr: [Int]) -> [String] {
 }
 
 print(getArrayNumbers(arr: [1, 2, 3, 4, 5, 6, 0]))
+
+
+//Сортировка пузырьком
+//Функция, которая сортирует числа от самого маленьког очисла до самого большого
+
+func bubbleSort(arr: [Int])  {
+    var sortedArray = arr
+    var tmp = 0
+    for i in 0..<sortedArray.count {
+        for j in 0..<sortedArray.count - 1 {
+            if sortedArray[j] > sortedArray[j + 1] { // если элемент слева больше эелемнта справа
+                tmp =  sortedArray[j] // присваиваем левый элемент в переменную tmp
+                sortedArray[j] = sortedArray[j + 1] // ставим на место левого элемента правый
+                sortedArray[j + 1] = tmp // а на место правого элемента левый
+            }
+        }
+    }
+    print(sortedArray)
+}
+
+bubbleSort(arr: [2, 10, 4, 5])
+
+//Функция, которая сортирует массив строк по длине строк (от самой короткой до самой длинной).
+
+func sortString(arr: [String]) {
+    var newArr = arr
+    for i in 0..<newArr.count {
+        for j in 0..<newArr.count - 1 {
+            if newArr[j].count > newArr[j + 1].count {
+                var tmp = newArr[j]
+                newArr[j] = newArr[j + 1]
+                newArr[j + 1] = tmp
+            }
+        }
+    }
+    print(newArr)
+}
+
+sortString(arr: ["Test", "Error", "Void", "Hej", "i love swift"])
