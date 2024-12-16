@@ -78,12 +78,12 @@ case .errorCodeOther(let code):
 //Написать функцию, которая принимает Generic объект и складывает в массив/словарь (на выбор)
 
 var arrAny: [Any] = []
-@MainActor func appendInArray<T>(_ element: T) {
+    func appendInArray<T>(_ element: T) {
     arrAny.append(element)
 }
 
 var dictAny: [String: Any] = [:]
-@MainActor func appendInDictionary<T>(_ element: T) {
+    func appendInDictionary<T>(_ element: T) {
     dictAny["\(Int.random(in: 1...100))"] = element
 }
 
@@ -136,7 +136,7 @@ var robots: [Any] = []
 //var robots: [Robots] = []
     
 extension Robots {
-    @MainActor func addArray() {
+        func addArray() {
         robots.append((self.name, self.hands))
 //      robots.append(self) //не получилось положить в массив объекты задав массив - var robots: [Robots<Any, Any>] = []
         }

@@ -307,28 +307,28 @@ class LibraryObject: Readable, LibraryItem {
     var isAvailable: Bool
     
     func description() -> String {
-        if isAvailable {
-            return "Объект \(title): доступен - \(isAvailable)"
+        if self.isAvailable {
+            return "Объект \(self.title): доступен - \(self.isAvailable)"
         } else {
-            return  "Объект \(title): недоступен - \(isAvailable)"
+            return  "Объект \(self.title): недоступен - \(self.isAvailable)"
         }
     }
     
     func borrow() -> String {
-        if isAvailable {
-            isAvailable = false
-            return "Объект \(title) взят в аренду."
+        if self.isAvailable {
+            self.isAvailable = false
+            return "Объект \(self.title) взят в аренду."
         } else {
-            return "Объект \(title) недоступен для аренды."
+            return "Объект \(self.title) недоступен для аренды."
         }
     }
     
     func returnItem() -> String {
-        if !isAvailable {
-            isAvailable = true
-            return "Объект \(title) возвращен."
+        if !self.isAvailable {
+            self.isAvailable = true
+            return "Объект \(self.title) возвращен."
         } else {
-            return  "Объект \(title) недоступен."
+            return  "Объект \(self.title) недоступен."
         }
     }
     
