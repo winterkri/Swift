@@ -47,7 +47,7 @@ class Element {
 class BasePage: Element {
     var elements: [Element] = []
     
-    func appendElement(element: Element) {
+    func addElement(element: Element) {
         self.elements.append(element)
     }
 }
@@ -112,12 +112,12 @@ let buttonClose = Button(accessibilityIdentifier: "close-button", label: Label(t
 
 
 //кладем элементы в контейнер element
-profilepage.appendElement(element: label)
-profilepage.appendElement(element: textFieldByLogin)
-profilepage.appendElement(element: textFieldByPassword)
-profilepage.appendElement(element: buttonQuestion)
-profilepage.appendElement(element: buttonLock)
-profilepage.appendElement(element: buttonClose)
+profilepage.addElement(element: label)
+profilepage.addElement(element: textFieldByLogin)
+profilepage.addElement(element: textFieldByPassword)
+profilepage.addElement(element: buttonQuestion)
+profilepage.addElement(element: buttonLock)
+profilepage.addElement(element: buttonClose)
 
 
 //автотест
@@ -128,7 +128,7 @@ for i in profilepage.elements {
         value.enterLogin(login: "salfetka5")
     case let value as TextField where value.accessibilityIdentifier == "password-input-textfield":
         value.enterPassword(pass: "123456")
-    case let value as Button where value.label?.accessibilityIdentifier == "cool-button-2":
+    case let value as Button where value.accessibilityIdentifier == "cool-button-2":
         value.tap()
   Thread.sleep(forTimeInterval: 3)
     case let value as Button where value.accessibilityIdentifier == "close-button":
