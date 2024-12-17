@@ -36,77 +36,89 @@ ProfilePage
  */
 
 class Element {
-    let accessibilityIdentifier: String
+    var accessibilityIdentifier: String?
     
-    init(accessibilityIdentifier: String) {
+    init(accessibilityIdentifier: String?) {
         self.accessibilityIdentifier = accessibilityIdentifier
     }
 }
 
+// Контейнер, в котором будет храниться массив элементов
 class BasePage: Element {
     var elements: [Element] = []
     
-    func appendelements(element: Element) {
+    func appendElement(element: Element) {
         self.elements.append(element)
     }
 }
 
 class Label: Element {
-    func tap() {
-        print("Button tap")
+    let text: String?
+    
+    init(text: String? = nil, accessibilityIdentifier: String?) {
+        self.text = text
+        super.init(accessibilityIdentifier: accessibilityIdentifier)
     }
 }
 
 
 class Button: Element {
     let label: Label?
+    let iconName: String?
+
+    
     func tap() {
-        print("Button tapped")
+        print("Вы нажали на элемент \(self.label?.text ?? "Кнопка")")
     }
     
-    init(accessibilityIdentifier: String, label: Label?) {
+    init(accessibilityIdentifier: String, label: Label? = nil, iconName: String? = nil) {
         self.label = label
+        self.iconName = iconName
         super.init(accessibilityIdentifier: accessibilityIdentifier)
     }
 }
 
 
 class TextField: Element {
+    let placeholder: String?
+    
     func enterLogin(login: String) {
-        print("Вы ввели логин \(login)")
+        print("Вы ввели логин \(login) в инпут \(placeholder ?? "Логин")")
     }
     
     func enterPassword(pass: String) {
-        print("Вы ввели пароль")
+        print("Вы ввели пароль в инпут \(placeholder ?? "Пароль")")
+    }
+    
+    init(placeholder: String?, accessibilityIdentifier: String?) {
+        self.placeholder = placeholder
+        super.init(accessibilityIdentifier: accessibilityIdentifier)
     }
 }
 
-
 class ProfilePage: BasePage {
-
+    let iconName = "login_icon"
     
 }
 
-let basepage = BasePage(accessibilityIdentifier: "basepage")
-let profilepage = ProfilePage(accessibilityIdentifier: "profile")
+let profilepage = ProfilePage(accessibilityIdentifier: nil)
 
-let label = Label(accessibilityIdentifier: "login-label")
-let textFieldByLogin = TextField(accessibilityIdentifier: "login-input-textfield")
-let textFieldByPassword = TextField(accessibilityIdentifier: "password-input-textfield")
-let buttonQuestion = Button(accessibilityIdentifier: "cool-button-1", label: nil)
-let buttonLock = Button(accessibilityIdentifier: "cool-button-2", label: Label(accessibilityIdentifier: "button-login-label"))
-let buttonClose = Button(accessibilityIdentifier: "close-button", label: Label(accessibilityIdentifier: "button-close-label"))
-
+let label = Label(text: "Вход", accessibilityIdentifier: "login-label")
+let textFieldByLogin = TextField(placeholder: "Логин", accessibilityIdentifier: "login-input-textfield")
+let textFieldByPassword = TextField(placeholder: "Пароль", accessibilityIdentifier: "password-input-textfield")
+let buttonQuestion = Button(accessibilityIdentifier: "cool-button-1", iconName: "question")
+let buttonLock = Button(accessibilityIdentifier: "cool-button-2", label: Label(text: "Войти", accessibilityIdentifier: "button-login-label"), iconName: "lock")
+let buttonClose = Button(accessibilityIdentifier: "close-button", label: Label(text: "Закрыть", accessibilityIdentifier: "button-close-label"), iconName: "close")
 
 
-profilepage.appendelements(element: label)
-profilepage.appendelements(element: textFieldByLogin)
-profilepage.appendelements(element: textFieldByPassword)
-profilepage.appendelements(element: buttonQuestion)
-profilepage.appendelements(element: buttonLock)
-profilepage.appendelements(element: buttonClose)
+//кладем элементы в контейнер element
+profilepage.appendElement(element: label)
+profilepage.appendElement(element: textFieldByLogin)
+profilepage.appendElement(element: textFieldByPassword)
+profilepage.appendElement(element: buttonQuestion)
+profilepage.appendElement(element: buttonLock)
+profilepage.appendElement(element: buttonClose)
 
-print(profilepage.elements)
 
 //автотест
 
@@ -118,7 +130,7 @@ for i in profilepage.elements {
         value.enterPassword(pass: "123456")
     case let value as Button where value.label?.accessibilityIdentifier == "button-login-label":
         value.tap()
-        //подождать 3 секунды?
+    Thread.sleep(forTimeInterval: 3)
     case let value as Button where value.accessibilityIdentifier == "close-button":
             value.tap()
     default:
