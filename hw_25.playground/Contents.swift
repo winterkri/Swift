@@ -128,13 +128,16 @@ for i in profilepage.elements {
         value.enterLogin(login: "salfetka5")
     case let value as TextField where value.accessibilityIdentifier == "password-input-textfield":
         value.enterPassword(pass: "123456")
-    case let value as Button where value.label?.accessibilityIdentifier == "button-login-label":
+    case let value as Button where value.label?.accessibilityIdentifier == "cool-button-2":
         value.tap()
-    Thread.sleep(forTimeInterval: 3)
+  Thread.sleep(forTimeInterval: 3)
     case let value as Button where value.accessibilityIdentifier == "close-button":
             value.tap()
     default:
         break
     }
+    
 }
+
+
 
