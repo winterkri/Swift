@@ -1,27 +1,27 @@
-# Swift
+# Домашние задания по Swift
 
-hw_1 - Переменные  
-hw_2 - Базовые типы  
-hw_3 - Строки  
-hw_4 - Массивы / array  
-hw_5 - Dictionary / Словари  
-hw_6 - Tuples / кортежи  
-hw_7 - Опционалы  
-hw_8 - Switch / if else / for each   
-hw_9 - Function / функции / методы
-hw_10 -  Замыкания / closure
-hw_11 -  Перечисления / enum
-hw_12 -  Class vs Struct
-hw_13 -  Property / Свойства в классах и структурах
-hw_14 -  Property type
-hw_15 - Subscript
-hw_16 - Наследование и ООП
-hw_17 -  ARC - automatic reference counter
-hw_18 -  Optional chainining
-hw_19 -  Приведение и проверка типов
-hw_20 - Extension / расширения
-hw_21 -  Generic / дженерики
-hw_22 -  Protocol / Протоколо-ориентированное программирование
-hw_23 -  Delegate / Паттерн делегат
-hw_24 -  Json / Encodable / Decodable / Codable
-hw_25 -  Приближенная задача к автотесу
+1. **hw_1** - Переменные  
+2. **hw_2** - Базовые типы  
+3. **hw_3** - Строки  
+4. **hw_4** - Массивы (Array)  
+5. **hw_5** - Словари (Dictionary)  
+6. **hw_6** - Кортежи (Tuples)  
+7. **hw_7** - Опционалы  
+8. **hw_8** - Switch, if-else, forEach  
+9. **hw_9** - Функции (Function, методы)  
+10. **hw_10** - Замыкания (Closure)  
+11. **hw_11** - Перечисления (Enum)  
+12. **hw_12** - Class vs Struct  
+13. **hw_13** - Свойства в классах и структурах (Property)  
+14. **hw_14** - Свойства типов (Property Type)  
+15. **hw_15** - Subscript  
+16. **hw_16** - Наследование и ООП  
+17. **hw_17** - ARC (Automatic Reference Counting)  
+18. **hw_18** - Optional Chaining  
+19. **hw_19** - Приведение и проверка типов  
+20. **hw_20** - Расширения (Extensions)  
+21. **hw_21** - Дженерики (Generics)  
+22. **hw_22** - Протоколы и протоколо-ориентированное программирование (Protocol-Oriented Programming)  
+23. **hw_23** - Паттерн делегата (Delegate)  
+24. **hw_24** - Работа с JSON (Encodable, Decodable, Codable)  
+25. **hw_25** - Приближенная задача к автотестам  
